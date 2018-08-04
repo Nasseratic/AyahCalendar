@@ -3,6 +3,10 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import './registerServiceWorker'
+import 'vue-event-calendar/dist/style.css'
+import vueEventCalendar from 'vue-event-calendar'
+
+Vue.use(vueEventCalendar, {locale: 'en'}) 
 
 Vue.config.productionTip = false
 
