@@ -1,21 +1,23 @@
-# ayah_calendar
+# Ayah Calendar
+
+This project now uses React and Vite.
 
 ## Project setup
-```
-yarn install
+```bash
+pnpm install
 ```
 
 ### Compiles and hot-reloads for development
-```
-yarn run serve
+```bash
+pnpm run dev
 ```
 
 ### Compiles and minifies for production
-```
-yarn run build
+```bash
+pnpm run build
 ```
 
 ### Run your unit tests
-```
-yarn run test:unit
+```bash
+pnpm run test
 ```
