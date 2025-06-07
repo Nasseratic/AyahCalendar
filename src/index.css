@@ -1,5 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 body {
-  margin: 0;
-  padding: 0;
-  font-family: Montserrat, sans-serif;
+  @apply m-0 p-0 font-sans;
 }
