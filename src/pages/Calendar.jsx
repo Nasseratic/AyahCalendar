@@ -5,25 +5,26 @@ import './Calendar.css'
 
 export default function CalendarPage() {
   const [ayaats, setAyaats] = useState([])
-  const [date, setDate] = useState(new Date(2019,0,1))
+  const [date, setDate] = useState(new Date())
 
   useEffect(() => {
     const modules = import.meta.glob('../assets/surah/surah_*.json')
     const load = async () => {
       const events = []
+      const year = new Date().getFullYear()
       for (let i = 1; i <= 12; i++) {
         const mod = await modules[`../assets/surah/surah_${i}.json`]()
         const element = mod.default
         for (let j = 1; j < element.count && j <= 12; j++) {
           events.push({
-            date: new Date(2019, j - 1, i),
+            date: new Date(year, j - 1, i),
             title: element.verse[`verse_${j}`],
             num: `[${i}:${j}]`
           })
         }
         for (let j = 1; j < element.count && j <= 31; j++) {
           events.push({
-            date: new Date(2019, i - 1, j),
+            date: new Date(year, i - 1, j),
             title: element.verse[`verse_${j}`],
             num: `[${i}:${j}]`
           })
