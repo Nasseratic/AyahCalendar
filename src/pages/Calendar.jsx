@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react'
 import ReactCalendar from 'react-calendar'
 import 'react-calendar/dist/Calendar.css'
-import './Calendar.css'
+import '../calendar.css'
+
+import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card.jsx'
 
 export default function CalendarPage() {
   const [ayaats, setAyaats] = useState([])
@@ -44,24 +46,34 @@ export default function CalendarPage() {
   }, {})
 
   const tileContent = ({ date: d, view }) => {
-    const key = d.toISOString().slice(0,10)
+    const key = d.toISOString().slice(0, 10)
     if (view === 'month' && eventsByDate[key]) {
-      return <div className="highlight" />
+      return <div className="bg-emerald-500 h-1" />
     }
   }
 
   return (
-    <div className="about">
-      <ReactCalendar onChange={setDate} value={date} tileContent={tileContent} />
-      <div className="events-wrapper">
-        {(eventsByDate[date.toISOString().slice(0,10)] || []).map((ayah, idx) => (
-          <div key={idx} className="event-item">
-            <div className="wrapper">
-              <h3 className="title">{ayah.title} <small>{ayah.num}</small></h3>
+    <div className="p-10 text-center space-y-6">
+      <ReactCalendar
+        onChange={setDate}
+        value={date}
+        tileContent={tileContent}
+        className="mx-auto"
+      />
+      <Card className="max-w-xl mx-auto">
+        <CardHeader>
+          <CardTitle className="font-tajawal">Ayah for {date.toLocaleDateString()}</CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-2">
+          {(eventsByDate[date.toISOString().slice(0, 10)] || []).map((ayah, idx) => (
+            <div key={idx} className="text-right border-b pb-2 last:border-none">
+              <h3 className="font-tajawal text-lg">
+                {ayah.title} <small className="text-gray-500">{ayah.num}</small>
+              </h3>
             </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </CardContent>
+      </Card>
     </div>
   )
 }
