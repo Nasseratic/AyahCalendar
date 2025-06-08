@@ -1,5 +1,5 @@
 import { Outlet, useNavigate } from 'react-router-dom'
-import { Button } from './components/ui/button'
+import { Button } from '@/components/ui/button'
 import brandImg from './assets/New Project.png'
 
 export default function App() {
