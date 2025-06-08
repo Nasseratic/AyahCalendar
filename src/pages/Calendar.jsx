@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
-import { Calendar } from '../components/ui/calendar'
-import { Card, CardHeader, CardTitle } from '../components/ui/card'
+import { Calendar } from '@/components/ui/calendar'
+import { Card, CardHeader, CardTitle } from '@/components/ui/card'
 
 export default function CalendarPage() {
   const [ayaats, setAyaats] = useState([])
