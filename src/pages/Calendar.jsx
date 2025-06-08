@@ -12,7 +12,7 @@ export default function CalendarPage() {
     const load = async () => {
       const events = []
       const year = new Date().getFullYear()
-      for (let i = 1; i <= 12; i++) {
+      for (let i = 1; i <= 31; i++) {
         const mod = await modules[`../assets/surah/surah_${i}.json`]()
         const element = mod.default
         for (let j = 1; j < element.count && j <= 12; j++) {
@@ -22,12 +22,14 @@ export default function CalendarPage() {
             num: `[${i}:${j}]`
           })
         }
-        for (let j = 1; j < element.count && j <= 31; j++) {
-          events.push({
-            date: new Date(year, i - 1, j),
-            title: element.verse[`verse_${j}`],
-            num: `[${i}:${j}]`
-          })
+        if (i <= 12) {
+          for (let j = 1; j < element.count && j <= 31; j++) {
+            events.push({
+              date: new Date(year, i - 1, j),
+              title: element.verse[`verse_${j}`],
+              num: `[${i}:${j}]`
+            })
+          }
         }
       }
       events.sort((a,b)=>a.date-b.date)
