@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react'
-import ReactCalendar from 'react-calendar'
-import 'react-calendar/dist/Calendar.css'
-import './Calendar.css'
+import { Calendar } from '@/components/ui/calendar'
+import { Card, CardHeader, CardTitle } from '@/components/ui/card'
 
 export default function CalendarPage() {
   const [ayaats, setAyaats] = useState([])
@@ -45,23 +44,16 @@ export default function CalendarPage() {
     return acc
   }, {})
 
-  const tileContent = ({ date: d, view }) => {
-    const key = d.toISOString().slice(0,10)
-    if (view === 'month' && eventsByDate[key]) {
-      return <div className="highlight" />
-    }
-  }
-
   return (
-    <div className="about">
-      <ReactCalendar onChange={setDate} value={date} tileContent={tileContent} />
-      <div className="events-wrapper">
+    <div>
+      <Calendar mode="single" selected={date} onSelect={setDate} />
+      <div>
         {(eventsByDate[date.toISOString().slice(0,10)] || []).map((ayah, idx) => (
-          <div key={idx} className="event-item">
-            <div className="wrapper">
-              <h3 className="title">{ayah.title} <small>{ayah.num}</small></h3>
-            </div>
-          </div>
+          <Card key={idx}>
+            <CardHeader>
+              <CardTitle>{ayah.title} <small>{ayah.num}</small></CardTitle>
+            </CardHeader>
+          </Card>
         ))}
       </div>
     </div>
