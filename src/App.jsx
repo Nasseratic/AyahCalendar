@@ -8,7 +8,11 @@ export default function App() {
     <div id="app">
       <header>
         <Button variant="ghost" onClick={() => navigate('/')}>
-          <img src={brandImg} alt="Ayah Calendar" className="h-10" />
+          <img
+            src={brandImg}
+            alt="Ayah Calendar"
+            className="h-[100px] w-[100px]"
+          />
         </Button>
         <Button variant="link" onClick={() => navigate('/')}>Ayah Calendar</Button>
       </header>
