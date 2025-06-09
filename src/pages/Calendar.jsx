@@ -47,11 +47,13 @@ export default function CalendarPage() {
   return (
     <div>
       <Calendar mode="single" selected={date} onSelect={setDate} />
-      <div>
+      <div className="flex flex-col gap-4 mt-4">
         {(eventsByDate[date.toISOString().slice(0,10)] || []).map((ayah, idx) => (
-          <Card key={idx}>
+          <Card key={idx} className="p-6">
             <CardHeader>
-              <CardTitle>{ayah.title} <small>{ayah.num}</small></CardTitle>
+              <CardTitle>
+                {ayah.title} <small>{ayah.num}</small>
+              </CardTitle>
             </CardHeader>
           </Card>
         ))}
